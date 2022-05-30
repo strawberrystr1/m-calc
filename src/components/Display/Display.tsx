@@ -1,14 +1,10 @@
+import { IDisplayProps } from '@interfaces/props'
 import { DisplayWrapper } from './components'
-
-type Props = {
-  currentNumber: string
-  expression: string
-}
 
 export const Display = ({
   currentNumber,
   expression,
-}: Props) => {
+}: IDisplayProps) => {
   return (
     <DisplayWrapper>
       <p>{expression}</p>

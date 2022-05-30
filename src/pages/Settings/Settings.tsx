@@ -6,13 +6,12 @@ import {
   SettingsWrapper,
 } from './components'
 import { useTranslation } from 'react-i18next'
+import { ISettingsPageProps } from '@interfaces/props'
 
-type Props = {
-  changeTheme: (theme: string) => void
-  theme: string
-}
-
-export const Settings = ({ changeTheme, theme }: Props) => {
+export const Settings = ({
+  changeTheme,
+  theme,
+}: ISettingsPageProps) => {
   const { t, i18n } = useTranslation()
   const handleThemeChange = (
     e: React.ChangeEvent<HTMLSelectElement>,

@@ -9,6 +9,7 @@
       "@helpers/*": ["src/helpers/*"],
       "@App/*": ["src/App/*"],
       "@theme/*": ["src/theme/*"],
+      "@interfaces/*": ["src/interfaces/*"]
     },
   }
 }

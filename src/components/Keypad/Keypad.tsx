@@ -1,30 +1,24 @@
-import buttons from '@constants/index'
+import { buttons } from '@constants/index'
+import {
+  IKeypadActions,
+  IKeypadProps,
+} from '@interfaces/props'
 import { KeyButton, KeypadWrapper } from './components'
-
-type Actions = {
-  operand: (item: string) => void
-  digit: (item: string) => void
-  action: (item: string) => void
-}
-
-type Props = {
-  actions: Actions
-  changeSign: () => void
-  negative: boolean
-}
 
 export const Keypad = ({
   actions,
   changeSign,
   negative,
-}: Props) => {
+}: IKeypadProps) => {
   return (
     <KeypadWrapper>
       {buttons.map(item => (
         <KeyButton
           key={item.char}
           onClick={() =>
-            actions[item.type as keyof Actions](item.char)
+            actions[item.type as keyof IKeypadActions](
+              item.char,
+            )
           }>
           {negative && !!Number(item.char) && '-'}
           {item.char}

@@ -1,3 +1,4 @@
 import { buttons } from './buttons'
+import { HOME, SETTINGS } from './routes'
 
-export default buttons
+export { buttons, HOME, SETTINGS }

@@ -1,6 +1,7 @@
 import { PageLayout, FlexRowSB } from '@layouts/index'
 import { HeaderWrapper, NavLinkStyled } from './components'
 import { useTranslation } from 'react-i18next'
+import { HOME, SETTINGS } from '@constants/routes'
 
 const Header = () => {
   const { t } = useTranslation()
@@ -11,10 +12,10 @@ const Header = () => {
         <FlexRowSB>
           <p>Calculator App</p>
           <nav>
-            <NavLinkStyled to="/">
+            <NavLinkStyled to={HOME}>
               {t('header.home')}
             </NavLinkStyled>
-            <NavLinkStyled to="/settings">
+            <NavLinkStyled to={SETTINGS}>
               {t('header.settings')}
             </NavLinkStyled>
           </nav>

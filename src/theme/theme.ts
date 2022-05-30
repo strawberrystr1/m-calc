@@ -1,6 +1,5 @@
 const font = 'sans-serif'
 
-// Color palette
 const black = '#000000'
 const white = '#ffffff'
 const error = '#c86464'
@@ -43,23 +42,3 @@ export const darkTheme = {
   headerBg: 'whitesmoke',
   displayUpper: '#d7dbe0',
 }
-
-// export default {
-//   font,
-//   spaces: [0, 4, 8, 16, 32, 64, 128],
-//   fontSizes: [12, 14, 16, 20, 24, 32, 40, 56, 72, 80],
-//   colors: {
-//     primary,
-//     secondary,
-//     secondaryLight,
-//     black,
-//     white,
-//     error,
-//     light: {
-//       borderLight,
-//     },
-//     dark: {
-//       borderDark,
-//     },
-//   },
-// }

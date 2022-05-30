@@ -16,119 +16,25 @@ import React, {
 } from 'react'
 import {
   calculateExpression,
-  handleEqualInpus,
+  Calculator,
+  handleDotInput,
+  handleEqualInput,
   handleNextBracket,
   handleNextDigit,
   handleNextOperand,
-} from '@helpers/functions'
+} from '@helpers/index'
 import { HistoryContext } from '@App/App'
-
-class Command {
-  execute: () => number
-  constructor(execute: () => number) {
-    this.execute = execute
-  }
-}
-
-export class Calculator {
-  private current = 0
-  contructor() {
-    this.current = 0
-  }
-
-  execute(command: Command) {
-    this.current = command.execute()
-  }
-
-  getCurrent() {
-    if (Number.isInteger(this.current)) {
-      return this.current.toString()
-    }
-    const [, fraction] = this.current.toString().split('.')
-    if (fraction && fraction.length > 3) {
-      return this.current.toFixed(3)
-    }
-    return this.current.toString()
-  }
-
-  reset() {
-    this.current = 0
-  }
-}
-
-export class AddCommand {
-  x: number
-  y: number
-  constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
-  }
-  execute() {
-    return this.x + this.y
-  }
-}
-
-export class SubCommand {
-  x: number
-  y: number
-  constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
-  }
-  execute() {
-    return this.x - this.y
-  }
-}
-
-export class MulCommand {
-  x: number
-  y: number
-  constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
-  }
-  execute() {
-    return this.x * this.y
-  }
-}
-
-export class DivCommand {
-  x: number
-  y: number
-  constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
-  }
-  execute() {
-    return this.x / this.y
-  }
-}
-
-export class ResDivCommand {
-  x: number
-  y: number
-  constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
-  }
-  execute() {
-    return this.x % this.y
-  }
-}
-
-type Props = {
-  showHistory: boolean
-  toggleHistory: () => void
-}
+import { IHomePageProps } from '@interfaces/props'
 
 export const Home = ({
   showHistory,
   toggleHistory,
-}: Props) => {
+}: IHomePageProps) => {
   const [currentNumber, setCurrentNumber] = useState('0')
   const [expression, setExpression] = useState('')
   const [negative, setNeagtive] = useState(false)
   const [afterEqual, setAfterEqual] = useState(false)
+
   const { dispatch } = useContext(HistoryContext)
   const calculator = useMemo(() => new Calculator(), [])
 
@@ -141,36 +47,20 @@ export const Home = ({
       setAfterEqual(false)
     }
     if (item === '.') {
-      setCurrentNumber(prev => {
-        if (prev === '0') {
-          return `.`
-        }
-        if (!prev.includes('.')) {
-          return prev + item
-        }
-        return prev
-      })
+      setCurrentNumber(handleDotInput(item))
     } else if (Number(item) || item === '0') {
-      setCurrentNumber(prev =>
-        handleNextDigit(prev, item, negative),
-      )
+      setCurrentNumber(handleNextDigit(item, negative))
     } else if (item === ')') {
-      setCurrentNumber(prev =>
-        handleNextBracket(item, prev, expression),
-      )
+      setCurrentNumber(handleNextBracket(item, expression))
     } else if (item === '(') {
-      setCurrentNumber(prev =>
-        handleNextBracket(item, prev),
-      )
+      setCurrentNumber(handleNextBracket(item))
     }
   }
 
   const handleOperand = (item: string) => {
     if (item === '=') {
       setAfterEqual(true)
-      setExpression(prev =>
-        handleEqualInpus(prev, currentNumber),
-      )
+      setExpression(handleEqualInput(currentNumber))
     } else {
       if (item === '-' && currentNumber === '(') {
         setCurrentNumber('(-')
@@ -182,9 +72,7 @@ export const Home = ({
         setCurrentNumber('0')
         return
       }
-      setExpression(prev =>
-        handleNextOperand(prev, currentNumber, item),
-      )
+      setExpression(handleNextOperand(currentNumber, item))
     }
     setCurrentNumber('0')
   }

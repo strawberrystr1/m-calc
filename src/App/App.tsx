@@ -1,4 +1,7 @@
 import Header from '@components/Header'
+import { HOME, SETTINGS } from '@constants/routes'
+import { reducer } from '@helpers/reducers'
+import { Context, Reducer } from '@interfaces/interfaces'
 import Home from '@pages/Home'
 import Settings from '@pages/Settings'
 import {
@@ -11,37 +14,10 @@ import { Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { ContentWrapper } from './components'
 
-type ReducerAction = {
-  type: string
-  payload: string
-}
-
-type Reducer = (
-  state: string[],
-  action: ReducerAction,
-) => string[]
-
-type Context = {
-  history: string[]
-  dispatch: React.Dispatch<ReducerAction>
-}
-
 export const HistoryContext = createContext<Context>({
   history: [],
   dispatch: () => ({}),
 })
-
-const reducer: Reducer = (state, action) => {
-  const { type, payload } = action
-  switch (type) {
-    case 'ADD':
-      return [...state, payload]
-    case 'RESET':
-      return []
-    default:
-      return state
-  }
-}
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -65,7 +41,7 @@ function App() {
           value={{ history, dispatch }}>
           <Routes>
             <Route
-              path="/"
+              path={HOME}
               element={
                 <Home
                   showHistory={showHistory}
@@ -74,7 +50,7 @@ function App() {
               }
             />
             <Route
-              path="/settings"
+              path={SETTINGS}
               element={
                 <Settings
                   changeTheme={changeTheme}
