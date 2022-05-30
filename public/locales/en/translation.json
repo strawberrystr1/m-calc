@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "dark": "Dark theme",
+    "light": "Light theme",
+    "btn": "Reset history"
+  },
+  "header": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "history": "History"
+}

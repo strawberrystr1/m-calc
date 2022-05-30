@@ -1,0 +1,79 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "react", "prettier", "react-hooks", "import"],
+  "env": {
+    "node": true,
+    "browser": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "prefer-destructuring": "error",
+    "react/react-in-jsx-scope": "off",
+    "max-len": [
+      "warn",
+      {
+        "code": 150,
+        "ignoreUrls": true,
+        "ignorePattern": "import"
+      }
+    ],
+    "no-unused-vars": "warn",
+    "operator-linebreak": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-closing-tag-location": 2,
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-max-props-per-line": [
+      2,
+      {
+        "maximum": 2,
+        "when": "always"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".tsx"]
+      }
+    ],
+    "jsx-quotes": ["error", "prefer-double"],
+    "comma-dangle": [2, "always-multiline"],
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "react/prop-types": "off",
+    "react/jsx-fragments": [1, "element"]
+  },
+  "overrides": [
+    {
+      "files": ["src/index.tsx"],
+      "rules": {
+        "react/jsx-filename-extension": "off",
+        "prettier/prettier": [
+          "error",
+          {
+            "singleQuote": true
+          }
+        ]
+      }
+    }
+  ]
+}
