@@ -5,9 +5,9 @@ import {
   HomeMain,
   HomeWrapper,
 } from './components'
-import Display from '@components/Display'
-import History from '@components/History'
-import Keypad from '@components/Keypad'
+import { Display } from '@components/Display'
+import { History } from '@components/History'
+import { Keypad } from '@components/Keypad'
 import React, {
   useContext,
   useEffect,
@@ -23,8 +23,11 @@ import {
   handleNextDigit,
   handleNextOperand,
 } from '@helpers/index'
-import { HistoryContext } from '@App/App'
-import { IHomePageProps } from '@interfaces/props'
+import {
+  IHomePageProps,
+  IKeypadActions,
+} from '@interfaces/props'
+import { HistoryContext } from '@helpers/context'
 
 export const Home = ({
   showHistory,
@@ -85,7 +88,7 @@ export const Home = ({
     }
   }
 
-  const actions = {
+  const actions: IKeypadActions = {
     operand: handleOperand,
     digit: handleDigit,
     action: deleteLast,

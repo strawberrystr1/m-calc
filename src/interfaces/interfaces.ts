@@ -8,7 +8,7 @@ export type Reducer = (
   action: IReducerAction,
 ) => string[]
 
-export interface Context {
+export interface ContextType {
   history: string[]
   dispatch: React.Dispatch<IReducerAction>
 }

@@ -1,3 +1,4 @@
 import { Home } from './Home'
+import HomeClass from './HomeClass'
 
-export default Home
+export { Home, HomeClass }

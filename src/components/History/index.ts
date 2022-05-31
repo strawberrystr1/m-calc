@@ -1,3 +1,4 @@
 import { History } from './History'
+import HistoryClass from './HistoryClass'
 
-export default History
+export { History, HistoryClass }

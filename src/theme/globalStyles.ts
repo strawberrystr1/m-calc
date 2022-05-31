@@ -16,6 +16,7 @@ export default createGlobalStyle<{
   body {
     width: 100%;
     height: 100%;
+    background: ${({ theme }) => theme.body};
   }
 
   body {

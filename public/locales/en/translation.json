@@ -5,8 +5,9 @@
     "btn": "Reset history"
   },
   "header": {
-    "home": "Home",
-    "settings": "Settings"
+    "home": "Home (FC)",
+    "settings": "Settings",
+    "class": "Home (CC)"
   },
   "history": "History"
 }

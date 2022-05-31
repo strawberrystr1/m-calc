@@ -1,3 +1,4 @@
 import { Settings } from './Settings'
+import SettingsClass from './SettingsClass'
 
-export default Settings
+export { Settings, SettingsClass }

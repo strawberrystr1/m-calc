@@ -1,3 +1,6 @@
+import { i18n } from 'i18next'
+import { TFunction } from 'react-i18next'
+
 export interface IHomePageProps {
   showHistory: boolean
   toggleHistory: () => void
@@ -24,3 +27,11 @@ export interface ISettingsPageProps {
   changeTheme: (theme: string) => void
   theme: string
 }
+
+export interface IClassTranslationProps {
+  t: TFunction<'translation', undefined>
+  i18n: i18n
+}
+
+export type SettingsPageClass = IClassTranslationProps &
+  ISettingsPageProps

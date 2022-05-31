@@ -19,7 +19,7 @@ export const HomeAside = styled.aside`
   justify-content: flex-start;
   border-left: 2px solid ${({ theme }) => theme.border};
   border-right: 2px solid ${({ theme }) => theme.border};
-  transition: all 0.6s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   &.hide {
     width: 0;
@@ -43,12 +43,12 @@ export const HistoryButton = styled.button`
   width: 70px;
   height: 50px;
   border-radius: 0 10px 10px 0;
-  border: 0.3px solid black;
   font-size: 34px;
   position: absolute;
   left: -1px;
   top: 0;
   cursor: pointer;
+  border: 0.3px solid ${({ theme }) => theme.border};
 
   &.active {
     right: 0px;

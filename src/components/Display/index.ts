@@ -1,3 +1,4 @@
 import { Display } from './Display'
+import DisplayClass from './DisplayClass'
 
-export default Display
+export { Display, DisplayClass }

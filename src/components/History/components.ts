@@ -14,5 +14,6 @@ export const List = styled.ul`
 `
 
 export const Heading = styled.h4`
+  margin-top: 40px;
   color: ${({ theme }) => theme.fontColor};
 `

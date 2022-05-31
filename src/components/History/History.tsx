@@ -1,7 +1,8 @@
-import { HistoryContext } from '@App/App'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { Heading, List } from './components'
 import { useTranslation } from 'react-i18next'
+import React from 'react'
+import { HistoryContext } from '@helpers/context'
 
 export const History = () => {
   const { history } = useContext(HistoryContext)

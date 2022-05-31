@@ -1,3 +1,4 @@
 import Header from './Header'
+import HeaderClass from './HeaderClass'
 
-export default Header
+export { Header, HeaderClass }
