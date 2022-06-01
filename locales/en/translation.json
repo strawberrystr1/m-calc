@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "dark": "Dark theme",
+    "light": "Light theme",
+    "btn": "Reset history"
+  },
+  "header": {
+    "home": "Home (FC)",
+    "settings": "Settings",
+    "class": "Home (CC)"
+  },
+  "history": "History"
+}
