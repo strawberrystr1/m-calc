@@ -10,7 +10,7 @@ module.exports = {
       '@helpers': path.resolve(__dirname, 'src/helpers/'),
       '@App': path.resolve(__dirname, 'src/App/'),
       '@theme': path.resolve(__dirname, 'src/theme/'),
-      '@interfaces': path.resolve(__dirname, 'src/interfaces/'),
+      '@interfaces': path.resolve(__dirname, 'src/interfaces/')
     }
   },
 };
