@@ -1,7 +1,7 @@
 {
   "name": "calc",
   "version": "0.1.0",
-  "homepage": "https://strawberrystr1.github.io/m-calc",
+  "homepage": "https://strawberrystr1.github.io/",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.0.0-alpha.3",
