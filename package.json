@@ -1,6 +1,7 @@
 {
   "name": "calc",
   "version": "0.1.0",
+  "homepage": "https://strawberrystr1.github.io/m-calc",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.0.0-alpha.3",
@@ -30,7 +31,9 @@
     "cypress": "start-server-and-test start http://localhost:3000 cypress:open",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:test": "start-server-and-test start http://localhost:3000 cypress:run"
+    "cypress:test": "start-server-and-test start http://localhost:3000 cypress:run",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -68,6 +71,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "i18next-browser-languagedetector": "^6.1.4",
     "i18next-http-backend": "^1.4.1",
