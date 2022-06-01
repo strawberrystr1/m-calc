@@ -10,7 +10,7 @@ export const History = () => {
   return (
     <React.Fragment>
       <Heading>{t('history')}</Heading>
-      <List>
+      <List data-test-id="history">
         {history.map(item => (
           <li key={item}>{item}</li>
         ))}

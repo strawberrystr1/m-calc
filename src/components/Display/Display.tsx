@@ -6,7 +6,7 @@ export const Display = ({
   expression,
 }: IDisplayProps) => {
   return (
-    <DisplayWrapper>
+    <DisplayWrapper data-test-id="display">
       <p>{expression}</p>
       <p>{currentNumber}</p>
     </DisplayWrapper>

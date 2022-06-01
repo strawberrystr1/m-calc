@@ -35,6 +35,7 @@ export const Settings = ({
     <PageLayout>
       <SettingsWrapper>
         <Select
+          data-test-id="theme"
           defaultValue={theme}
           onChange={handleThemeChange}>
           <option value="dark">{t('settings.dark')}</option>
@@ -43,6 +44,7 @@ export const Settings = ({
           </option>
         </Select>
         <Select
+          data-test-id="language"
           defaultValue={i18n.language}
           onChange={handleLanguageChange}>
           <option value="en">English</option>

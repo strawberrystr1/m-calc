@@ -11,9 +11,10 @@ export const Keypad = ({
   negative,
 }: IKeypadProps) => {
   return (
-    <KeypadWrapper>
+    <KeypadWrapper data-test-id="keypad">
       {buttons.map(item => (
         <KeyButton
+          data-test-id={`button-${item.char}`}
           key={item.char}
           onClick={() =>
             actions[item.type as keyof IKeypadActions](
@@ -24,7 +25,11 @@ export const Keypad = ({
           {item.char}
         </KeyButton>
       ))}
-      <KeyButton onClick={changeSign}>+/-</KeyButton>
+      <KeyButton
+        data-test-id="negative"
+        onClick={changeSign}>
+        +/-
+      </KeyButton>
     </KeypadWrapper>
   )
 }

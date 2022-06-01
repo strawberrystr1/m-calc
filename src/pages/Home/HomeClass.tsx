@@ -210,6 +210,7 @@ export default class HomeClass extends Component<
           </HomeMain>
           <HomeAside className={showHistory ? '' : 'hide'}>
             <HistoryButton
+              data-test-id="history-toggle"
               onClick={toggleHistory}
               className={showHistory ? '' : 'active'}>
               {showHistory ? '>' : '<'}

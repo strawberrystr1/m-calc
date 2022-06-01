@@ -14,7 +14,7 @@ const Header = () => {
     <HeaderWrapper>
       <PageLayout>
         <FlexRowSB>
-          <p>Calculator App</p>
+          <h1>Calculator App</h1>
           <nav>
             <NavLinkStyled to={HOME_CLASS}>
               {t('header.class')}

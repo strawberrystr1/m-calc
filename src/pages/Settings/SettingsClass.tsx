@@ -39,6 +39,7 @@ export default class SettingsClass extends Component<SettingsPageClass> {
       <PageLayout>
         <SettingsWrapper>
           <Select
+            data-test-id="theme"
             defaultValue={theme}
             onChange={this.handleThemeChange}>
             <option value="dark">
@@ -49,6 +50,7 @@ export default class SettingsClass extends Component<SettingsPageClass> {
             </option>
           </Select>
           <Select
+            data-test-id="language"
             defaultValue={i18n.language}
             onChange={this.handleLanguageChange}>
             <option value="en">English</option>

@@ -127,6 +127,7 @@ export const Home = ({
         </HomeMain>
         <HomeAside className={showHistory ? '' : 'hide'}>
           <HistoryButton
+            data-test-id="historyToggle"
             onClick={toggleHistory}
             className={showHistory ? '' : 'active'}>
             {showHistory ? '>' : '<'}

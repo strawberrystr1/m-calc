@@ -17,7 +17,7 @@ import {
   lightTheme,
   GlobalStyles,
 } from '@theme/index'
-import { createContext, useReducer, useState } from 'react'
+import { useReducer, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { ContentWrapper } from './components'

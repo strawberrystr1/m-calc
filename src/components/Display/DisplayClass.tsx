@@ -6,7 +6,7 @@ export default class DisplayClass extends Component<IDisplayProps> {
   render() {
     const { expression, currentNumber } = this.props
     return (
-      <DisplayWrapper>
+      <DisplayWrapper data-test-id="display">
         <p>{expression}</p>
         <p>{currentNumber}</p>
       </DisplayWrapper>

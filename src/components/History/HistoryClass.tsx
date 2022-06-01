@@ -13,7 +13,7 @@ class HistoryClass extends Component<IClassTranslationProps> {
         <Heading>{t('history')}</Heading>
         <HistoryContext.Consumer>
           {({ history }) => (
-            <List>
+            <List data-test-id="history">
               {history.map(item => (
                 <li key={item}>{item}</li>
               ))}

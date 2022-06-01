@@ -15,6 +15,7 @@ export default class KeypadClass extends Component<IKeypadProps> {
         {buttons.map(item => (
           <KeyButton
             key={item.char}
+            data-test-id={`button-${item.char}`}
             onClick={() =>
               actions[item.type as keyof IKeypadActions](
                 item.char,
