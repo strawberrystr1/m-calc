@@ -6,25 +6,30 @@ import {
   ResDivCommand,
   SubCommand,
 } from '.'
+import {
+  CalculateExpression,
+  CalculateSigns,
+  CalculateSimpleExpression,
+  GetCommand,
+  ResolveBrackets,
+} from './types'
 
-export const calculateSimpleExpression = (
-  expression: string,
-): [string[], string] => {
-  const digits = expression.split(
-    /\s{1}\+\s{1}|\s{1}\-\s{1}|\s{1}\/\s{1}|\s{1}\*\s{1}|\s{1}%\s{1}/,
-  )
+export const calculateSimpleExpression: CalculateSimpleExpression =
+  expression => {
+    const digits = expression.split(
+      /\s{1}\+\s{1}|\s{1}\-\s{1}|\s{1}\/\s{1}|\s{1}\*\s{1}|\s{1}%\s{1}/,
+    )
 
-  const sign = expression
-    .split(' ')
-    .find(el => /^\+$|^-$|^\/$|^\*$|^%$/.test(el)) as string
+    const sign = expression
+      .split(' ')
+      .find(el =>
+        /^\+$|^-$|^\/$|^\*$|^%$/.test(el),
+      ) as string
 
-  return [digits, sign]
-}
+    return [digits, sign]
+  }
 
-export const getCommand = (
-  sign: string,
-  digits: string[],
-) => {
+export const getCommand: GetCommand = (sign, digits) => {
   const [x, y] = digits
   switch (sign) {
     case '+': {
@@ -45,9 +50,9 @@ export const getCommand = (
   }
 }
 
-const resolveBrackets = (
-  expression: string,
-  calculator: Calculator,
+const resolveBrackets: ResolveBrackets = (
+  expression,
+  calculator,
 ) => {
   let matches = expression.match(
     /\((?!-)[\d\s\-\+\*\/\%]*\)/g,
@@ -95,9 +100,9 @@ const resolveBrackets = (
   return result
 }
 
-export const calculateExpression = (
-  expression: string,
-  calculator: Calculator,
+export const calculateExpression: CalculateExpression = (
+  expression,
+  calculator,
 ) => {
   const expressionWOBrackets = resolveBrackets(
     expression,
@@ -112,10 +117,10 @@ export const calculateExpression = (
   calculateSigns(minorSigns, calculator, /^\+$|^-$/)
 }
 
-const calculateSigns = (
-  signs: string[],
-  calculator: Calculator,
-  regexp: RegExp,
+const calculateSigns: CalculateSigns = (
+  signs,
+  calculator,
+  regexp,
 ) => {
   for (let i = 0; i < signs.length; i++) {
     if (signs.length <= 1) break

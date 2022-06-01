@@ -1,4 +1,4 @@
-import { Reducer } from '@interfaces/interfaces'
+import { Reducer } from '@interfaces/baseTypes'
 
 export const reducer: Reducer = (state, action) => {
   const { type, payload } = action

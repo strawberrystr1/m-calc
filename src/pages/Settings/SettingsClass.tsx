@@ -1,5 +1,5 @@
 import { HistoryContext } from '@helpers/context'
-import { ContextType } from '@interfaces/interfaces'
+import { ContextType } from '@interfaces/baseTypes'
 import { SettingsPageClass } from '@interfaces/props'
 import { PageLayout } from '@layouts/index'
 import React, { Component } from 'react'

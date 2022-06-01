@@ -6,10 +6,7 @@ import {
 } from '@constants/routes'
 import { HistoryContext } from '@helpers/context'
 import { reducer } from '@helpers/reducers'
-import {
-  ContextType,
-  Reducer,
-} from '@interfaces/interfaces'
+import { ContextType, Reducer } from '@interfaces/baseTypes'
 import { Home, HomeClass } from '@pages/Home'
 import { Settings } from '@pages/Settings'
 import {
@@ -21,6 +18,7 @@ import { useReducer, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { ContentWrapper } from './components'
+import { ChangeThemeCB } from './types'
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -31,7 +29,8 @@ function App() {
     arg => arg,
   )
 
-  const changeTheme = (theme: string) => setTheme(theme)
+  const changeTheme: ChangeThemeCB = theme =>
+    setTheme(theme)
   const toggleHistory = () => setShowHistory(prev => !prev)
 
   const context: ContextType = { history, dispatch }

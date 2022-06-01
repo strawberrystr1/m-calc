@@ -28,6 +28,7 @@ import {
   IKeypadActions,
 } from '@interfaces/props'
 import { HistoryContext } from '@helpers/context'
+import { HandleInput } from './types'
 
 export const Home = ({
   showHistory,
@@ -43,7 +44,7 @@ export const Home = ({
 
   const changeSign = () => setNeagtive(prev => !prev)
 
-  const handleDigit = (item: string) => {
+  const handleDigit: HandleInput = item => {
     if (afterEqual) {
       setExpression('')
       setCurrentNumber('0')
@@ -60,7 +61,7 @@ export const Home = ({
     }
   }
 
-  const handleOperand = (item: string) => {
+  const handleOperand: HandleInput = item => {
     if (item === '=') {
       setAfterEqual(true)
       setExpression(handleEqualInput(currentNumber))
@@ -80,7 +81,7 @@ export const Home = ({
     setCurrentNumber('0')
   }
 
-  const deleteLast = (item: string) => {
+  const deleteLast: HandleInput = item => {
     setCurrentNumber('0')
     if (item === 'CE') {
       setExpression('')

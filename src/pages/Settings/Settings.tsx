@@ -8,6 +8,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { ISettingsPageProps } from '@interfaces/props'
 import { HistoryContext } from '@helpers/context'
+import { HandleChange } from './types'
 
 export const Settings = ({
   changeTheme,
@@ -16,15 +17,15 @@ export const Settings = ({
   const { t, i18n } = useTranslation()
   const { dispatch } = useContext(HistoryContext)
 
-  const handleThemeChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleThemeChange: HandleChange<
+    HTMLSelectElement
+  > = e => {
     changeTheme(e.target.value)
   }
 
-  const handleLanguageChange = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleLanguageChange: HandleChange<
+    HTMLSelectElement
+  > = e => {
     i18n.changeLanguage(e.target.value)
   }
 

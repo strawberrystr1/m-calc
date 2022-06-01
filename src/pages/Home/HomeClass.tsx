@@ -12,7 +12,7 @@ import {
   calculateExpression,
 } from '@helpers/index'
 import { IHomePageState } from '@interfaces/classState'
-import { ContextType } from '@interfaces/interfaces'
+import { ContextType } from '@interfaces/baseTypes'
 import {
   IHomePageProps,
   IKeypadActions,

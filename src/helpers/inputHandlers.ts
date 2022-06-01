@@ -1,6 +1,14 @@
-export const compareBrackets = (
-  strs: string[],
-): [boolean, number, number] => {
+import {
+  CompareBrackets,
+  GetNextValueFromCurrentNumber,
+  HandleDotInput,
+  HandleEqualInput,
+  HandleNextBracket,
+  HandleNextDigit,
+  HandleNextOperand,
+} from './types'
+
+export const compareBrackets: CompareBrackets = strs => {
   const str = strs.join('')
   const right = str
     .split('')
@@ -9,40 +17,41 @@ export const compareBrackets = (
   return [right >= left, right, left]
 }
 
-export const handleEqualInput = (currentNumber: string) => {
-  return (prev: string) => {
-    const [_, rightBrackets, leftBrackets] =
-      compareBrackets([prev, currentNumber])
-    const bracketsToAdd = rightBrackets - leftBrackets
+export const handleEqualInput: HandleEqualInput =
+  currentNumber => {
+    return prev => {
+      const [_, rightBrackets, leftBrackets] =
+        compareBrackets([prev, currentNumber])
+      const bracketsToAdd = rightBrackets - leftBrackets
 
-    if (!prev) {
-      return `${currentNumber} =`
-    } else if (
-      !Number(prev[prev.length - 1]) &&
-      currentNumber === '0'
-    ) {
-      return `${prev
-        .slice(0, -2)
-        .padEnd(prev.length - 2 + bracketsToAdd, ')')}=`
-    } else if (prev.includes('=')) {
-      return prev
-    } else {
-      let nextValue = `${prev} ${currentNumber}`
-      nextValue =
-        nextValue.padEnd(
-          nextValue.length + bracketsToAdd,
-          ')',
-        ) + ' ='
-      return nextValue
+      if (!prev) {
+        return `${currentNumber} =`
+      } else if (
+        !Number(prev[prev.length - 1]) &&
+        currentNumber === '0'
+      ) {
+        return `${prev
+          .slice(0, -2)
+          .padEnd(prev.length - 2 + bracketsToAdd, ')')}=`
+      } else if (prev.includes('=')) {
+        return prev
+      } else {
+        let nextValue = `${prev} ${currentNumber}`
+        nextValue =
+          nextValue.padEnd(
+            nextValue.length + bracketsToAdd,
+            ')',
+          ) + ' ='
+        return nextValue
+      }
     }
   }
-}
 
-export const handleNextOperand = (
-  currentNumber: string,
-  item: string,
+export const handleNextOperand: HandleNextOperand = (
+  currentNumber,
+  item,
 ) => {
-  return (prev: string) => {
+  return prev => {
     if (
       /[\+-\\\*%]/.test(prev[prev.length - 1]) &&
       currentNumber === '0'
@@ -68,11 +77,11 @@ export const handleNextOperand = (
   }
 }
 
-export const handleNextDigit = (
-  item: string,
-  negative: boolean,
+export const handleNextDigit: HandleNextDigit = (
+  item,
+  negative,
 ) => {
-  return (prev: string) => {
+  return prev => {
     if (negative) {
       if (prev === '0') return `(-${item})`
 
@@ -98,39 +107,36 @@ export const handleNextDigit = (
   }
 }
 
-const getNextValueFromCurrentNumber = (
-  current: string,
-  next: string,
-  negative: boolean,
-) => {
-  const numberInExpression = current
-    .match(/\d*/g)
-    ?.filter(el => Number(el))
-    .join('')
-  let nextValue = ''
-  if (negative) {
-    if (Number(current)) {
-      nextValue = `(-${numberInExpression})`
-      return nextValue
+const getNextValueFromCurrentNumber: GetNextValueFromCurrentNumber =
+  (current, next, negative) => {
+    const numberInExpression = current
+      .match(/\d*/g)
+      ?.filter(el => Number(el))
+      .join('')
+    let nextValue = ''
+    if (negative) {
+      if (Number(current)) {
+        nextValue = `(-${numberInExpression})`
+        return nextValue
+      }
+      nextValue = current.replace(
+        /\(-\d*\)/g,
+        `(-${numberInExpression}${next})`,
+      )
+    } else {
+      nextValue = current.replace(
+        /\(-\d*\)/g,
+        `${numberInExpression}${next}`,
+      )
     }
-    nextValue = current.replace(
-      /\(-\d*\)/g,
-      `(-${numberInExpression}${next})`,
-    )
-  } else {
-    nextValue = current.replace(
-      /\(-\d*\)/g,
-      `${numberInExpression}${next}`,
-    )
+    return nextValue
   }
-  return nextValue
-}
 
-export const handleNextBracket = (
-  item: string,
-  expression?: string,
+export const handleNextBracket: HandleNextBracket = (
+  item,
+  expression?,
 ) => {
-  return (prev: string) => {
+  return prev => {
     if (item === ')') {
       if (prev === '(') return `(0)`
 
@@ -154,8 +160,8 @@ export const handleNextBracket = (
   }
 }
 
-export const handleDotInput = (item: string) => {
-  return (prev: string) => {
+export const handleDotInput: HandleDotInput = item => {
+  return prev => {
     if (prev === '0') {
       return `.`
     }
