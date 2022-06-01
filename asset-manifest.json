@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/m-calc/static/js/main.0708327c.js",
+    "main.js": "/m-calc/static/js/main.a2d08c55.js",
     "index.html": "/m-calc/index.html",
     "static/media/getFetch.cjs": "/m-calc/static/media/getFetch.c780682470504fffbd04.cjs",
-    "main.0708327c.js.map": "/m-calc/static/js/main.0708327c.js.map"
+    "main.a2d08c55.js.map": "/m-calc/static/js/main.a2d08c55.js.map"
   },
   "entrypoints": [
-    "static/js/main.0708327c.js"
+    "static/js/main.a2d08c55.js"
   ]
 }
