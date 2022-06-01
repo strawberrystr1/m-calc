@@ -1,6 +1,6 @@
-import { Display, DisplayClass } from '@components/Display'
+import { DisplayClass } from '@components/Display'
 import { HistoryClass } from '@components/History'
-import { Keypad, KeypadClass } from '@components/Keypad'
+import { KeypadClass } from '@components/Keypad'
 import { HistoryContext } from '@helpers/context'
 import {
   handleNextDigit,
@@ -25,6 +25,7 @@ import {
   HomeMain,
   HomeWrapper,
 } from './components'
+import ErrorBoundary from '@components/ErrorBoundary'
 
 export default class HomeClass extends Component<
   IHomePageProps,
@@ -198,24 +199,30 @@ export default class HomeClass extends Component<
       <PageLayout>
         <HomeWrapper>
           <HomeMain className={showHistory ? '' : 'active'}>
-            <DisplayClass
-              currentNumber={currentNumber}
-              expression={expression}
-            />
-            <KeypadClass
-              actions={this.actions}
-              changeSign={this.changeSign}
-              negative={negative}
-            />
+            <ErrorBoundary fallback="Display was broken. Try to reload the page">
+              <DisplayClass
+                currentNumber={currentNumber}
+                expression={expression}
+              />
+            </ErrorBoundary>
+            <ErrorBoundary fallback="Keypad was broken. Try to reload the page">
+              <KeypadClass
+                actions={this.actions}
+                changeSign={this.changeSign}
+                negative={negative}
+              />
+            </ErrorBoundary>
           </HomeMain>
           <HomeAside className={showHistory ? '' : 'hide'}>
-            <HistoryButton
-              data-test-id="history-toggle"
-              onClick={toggleHistory}
-              className={showHistory ? '' : 'active'}>
-              {showHistory ? '>' : '<'}
-            </HistoryButton>
-            {showHistory && <HistoryClass />}
+            <ErrorBoundary fallback="We can't load history. Try to reload the page">
+              <HistoryButton
+                data-test-id="history-toggle"
+                onClick={toggleHistory}
+                className={showHistory ? '' : 'active'}>
+                {showHistory ? '>' : '<'}
+              </HistoryButton>
+              {showHistory && <HistoryClass />}
+            </ErrorBoundary>
           </HomeAside>
         </HomeWrapper>
       </PageLayout>

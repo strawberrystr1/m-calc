@@ -1,6 +1,5 @@
 import {
   AddCommand,
-  Calculator,
   DivCommand,
   MulCommand,
   ResDivCommand,
@@ -62,7 +61,7 @@ const resolveBrackets: ResolveBrackets = (
     if (Number(matches[0].replace(/[\(\)]/g, ''))) break
 
     if (matches && matches.length >= 1) {
-      matches.forEach((item, i) => {
+      matches.forEach(item => {
         const signs = item.split(' ')
 
         const minorSigns = calculateSigns(

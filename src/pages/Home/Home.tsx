@@ -29,6 +29,7 @@ import {
 } from '@interfaces/props'
 import { HistoryContext } from '@helpers/context'
 import { HandleInput } from './types'
+import ErrorBoundary from '@components/ErrorBoundary'
 
 export const Home = ({
   showHistory,
@@ -116,24 +117,30 @@ export const Home = ({
     <PageLayout>
       <HomeWrapper>
         <HomeMain className={showHistory ? '' : 'active'}>
-          <Display
-            currentNumber={currentNumber}
-            expression={expression}
-          />
-          <Keypad
-            actions={actions}
-            changeSign={changeSign}
-            negative={negative}
-          />
+          <ErrorBoundary fallback="Display was broken. Try to reload the page">
+            <Display
+              currentNumber={currentNumber}
+              expression={expression}
+            />
+          </ErrorBoundary>
+          <ErrorBoundary fallback="Keypad was broken. Try to reload the page">
+            <Keypad
+              actions={actions}
+              changeSign={changeSign}
+              negative={negative}
+            />
+          </ErrorBoundary>
         </HomeMain>
         <HomeAside className={showHistory ? '' : 'hide'}>
-          <HistoryButton
-            data-test-id="historyToggle"
-            onClick={toggleHistory}
-            className={showHistory ? '' : 'active'}>
-            {showHistory ? '>' : '<'}
-          </HistoryButton>
-          {showHistory && <History />}
+          <ErrorBoundary fallback="We can't load history. Try to reload the page">
+            <HistoryButton
+              data-test-id="historyToggle"
+              onClick={toggleHistory}
+              className={showHistory ? '' : 'active'}>
+              {showHistory ? '>' : '<'}
+            </HistoryButton>
+            {showHistory && <History />}
+          </ErrorBoundary>
         </HomeAside>
       </HomeWrapper>
     </PageLayout>

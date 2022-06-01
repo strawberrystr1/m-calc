@@ -1,3 +1,4 @@
+import ErrorBoundary from '@components/ErrorBoundary'
 import { Header } from '@components/Header'
 import {
   HOME,
@@ -55,10 +56,12 @@ function App() {
             <Route
               path={SETTINGS}
               element={
-                <Settings
-                  changeTheme={changeTheme}
-                  theme={theme}
-                />
+                <ErrorBoundary fallback="Something went wrong. Try to reload the page">
+                  <Settings
+                    changeTheme={changeTheme}
+                    theme={theme}
+                  />
+                </ErrorBoundary>
               }
             />
             <Route
