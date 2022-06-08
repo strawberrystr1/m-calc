@@ -1,6 +1,6 @@
 describe('History test', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('#/')
   })
 
   it('History render', () => {

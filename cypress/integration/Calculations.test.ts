@@ -1,6 +1,6 @@
 describe('Math operations and expression calculations', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('#/')
   })
 
   it('Calculates two digit expression with all operations', () => {

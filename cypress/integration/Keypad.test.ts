@@ -1,6 +1,6 @@
 describe('Keypad tests', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('#/')
   })
   
   it('Render keypad', () => {

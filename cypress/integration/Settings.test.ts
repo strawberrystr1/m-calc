@@ -1,6 +1,6 @@
 describe('Settings page tests', () => {
   beforeEach(() => {
-    cy.visit('/settings')
+    cy.visit('#/settings')
   })
   
   it('Page render', () => {
@@ -27,21 +27,21 @@ describe('Settings page tests', () => {
   })
 
   it('Clear history button', () => {
-    cy.visit('/')
+    cy.visit('#/')
     cy.createFakeHistory(5)
     cy.get('[data-test-id=history] > li').should('have.length', 5)
-    cy.visit('/settings')
+    cy.visit('#/settings')
     cy.get('button').click()
-    cy.visit('/')
+    cy.visit('#/')
     cy.get('[data-test-id=history] > li').should('have.length', 0)
   })
 
   it('Language in whole app', () => {
     cy.get('select[data-test-id=language]').select('ru')
     cy.get('button').should('have.text', 'Очистить историю')
-    cy.get('a[href="/"]').should('have.text', 'На главную (ФК)').click()
+    cy.get('a[href="#/"]').should('have.text', 'На главную (ФК)').click()
     cy.get('h4').should('have.text', 'История операций')
-    cy.get('a[href="/class"]').should('have.text', 'На главную (КК)').click()
-    cy.get('a[href="/settings"]').should('have.text', 'Настройки').click()
+    cy.get('a[href="#/class"]').should('have.text', 'На главную (КК)').click()
+    cy.get('a[href="#/settings"]').should('have.text', 'Настройки').click()
   })
 })

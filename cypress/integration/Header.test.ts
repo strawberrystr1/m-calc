@@ -1,6 +1,6 @@
 describe('Header test', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('#/')
   })
 
   it('Render header', () => {
@@ -12,11 +12,11 @@ describe('Header test', () => {
   it('Navigate', () => {
     cy.get('a').contains('Home (CC)').click()
     cy.location().should((loc) => {
-      expect(loc.pathname).to.eq('/class')
+      expect(loc.pathname).to.eq('/')
     })
     cy.get('a').contains('Settings').click()
     cy.location().should((loc) => {
-      expect(loc.pathname).to.eq('/settings')
+      expect(loc.pathname).to.eq('/')
     })
   })
 })

@@ -1,6 +1,6 @@
 describe('Display test', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('#/')
   })
 
   describe('Numbers and operands input', () => {
